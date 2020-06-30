@@ -6,7 +6,7 @@ class State {
     this.init()
   }
   init() {
-      if (!pullData()) {
+      if (!this.pullData()) {
       this.pushData()
     }
   }
@@ -14,7 +14,7 @@ class State {
     localStorage.setItem('store',JSON.stringify(this.store))
   }
   pullData = () => {    
-    return localStorage.JSON.parse(getItem('store'))
+    return localStorage.getItem('store')
   }
   addBlock(data) {
     if (typeof data === 'object') {
