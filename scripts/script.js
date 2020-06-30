@@ -1,6 +1,6 @@
 'use strict';
 
-const state = new State(initialContent)
+const state = new State(initialContent.corrections)
 
 const containerTemplate = document.querySelector('#container-template').content.querySelector('.block-container'),
     subtitleTemplate = document.querySelector('#subtitle-template').content.querySelector('.subtitle'),
