@@ -15,26 +15,27 @@
 <body class="page">
     <div class="contant">
         <img src="./images/🏀.png" alt="Логотип" class="logo">
-        <h1 class="title">Правки</h1>
+        <h1 class="title" contenteditable="true">Правки</h1>
         <section class="blocks-container">
             <template id='container-template' style="display: none;">
-                <div class="block-container"></div>
+                <div class="block-container">
+                    <div class="side-menu">
+                        <button class="side-menu__button side-menu__button_type_title" aria-label="Добавить новый заголовок"></button>
+                        <button class="side-menu__button side-menu__button_type_text" aria-label="Добавить новый текст"></button>
+                        <button class="side-menu__button side-menu__button_type_delete" aria-label="Удалить текущий элемент"></button>
+                        <button class="side-menu__button side-menu__button_type_remove" aria-label="Перенести текущий элемент"></button>
+                    </div>
+                </div>
             </template>
             <template id='subtitle-template' style="display: none;">
-                <h2 class="subtitle"></h2>
+                <h2 class="subtitle" contenteditable="true"></h2>
             </template>
             <template id='paragraph-template' style="display: none;">
-                <p class="paragraph"></p>
+                <p class="paragraph" contenteditable="true"></p>
             </template>
         </section>
     </div>
-    <div class="side-menu">
-        <button class="side-menu__button side-menu__button_type_title" aria-label="Добавить новый заголовок"></button>
-        <button class="side-menu__button side-menu__button_type_text" aria-label="Добавить новый текст"></button>
-        <button class="side-menu__button side-menu__button_type_delete" aria-label="Удалить текущий элемент"></button>
-        <button class="side-menu__button  side-menu__button_type_remove"
-            aria-label="Перенести текущий элемент"></button>
-    </div>
+
     </section>
     </div>
     <script src="./scripts/initialContnent.js"></script>
