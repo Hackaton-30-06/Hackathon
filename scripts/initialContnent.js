@@ -1,11 +1,6 @@
 'use strict';
 
-let initialContent
-
-if (localStorage.getItem('savedContent')) {
-  initialContent = JSON.parse(localStorage.getItem('savedContent'))
-} else {
-    initialContent = {
+const initialContent = {
       corrections: {
         heading: 'Правки',
         blocks: [
@@ -44,6 +39,6 @@ if (localStorage.getItem('savedContent')) {
         ]
       }
     }
-  }
+
 
   
