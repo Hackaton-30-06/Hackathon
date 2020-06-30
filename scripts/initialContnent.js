@@ -1,3 +1,5 @@
+'use strict';
+
 let initialContent
 
 if (localStorage.getItem('savedContent')) {
@@ -43,4 +45,5 @@ if (localStorage.getItem('savedContent')) {
       }
     }
   }
+
   
