@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="./vendor/normalize.css">
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body class="page">
     <div class="contant">
         <img src="./images/🏀.png" alt="Логотип" class="logo">
@@ -18,13 +20,28 @@
             <template id='container-template' style="display: none;">
                 <div class="block-container"></div>
             </template>
-            <template id='subtitle-template' style="display: none;"><h2 class="subtitle"></h2></template>
-            <template id='paragraph-template' style="display: none;"><p class="paragraph"></p></template>
+            <template id='subtitle-template' style="display: none;">
+                <h2 class="subtitle"></h2>
+            </template>
+            <template id='paragraph-template' style="display: none;">
+                <p class="paragraph"></p>
+            </template>
         </section>
+    </div>
+    <div class="side-menu">
+        <button class="side-menu__button side-menu__button_type_title" aria-label="Добавить новый заголовок"></button>
+        <button class="side-menu__button side-menu__button_type_text" aria-label="Добавить новый текст"></button>
+        <button class="side-menu__button side-menu__button_type_delete" aria-label="Удалить текущий элемент"></button>
+        <button class="side-menu__button  side-menu__button_type_remove"
+            aria-label="Перенести текущий элемент"></button>
+    </div>
+    </section>
     </div>
     <script src="./scripts/initialContnent.js"></script>
     <script src="./scripts/BlocksList.js"></script>
     <script src="./scripts/Block.js"></script>
     <script src="./scripts/script.js"></script>
+    <script src="scripts/initialContnent.js"></script>
 </body>
+
 </html>
