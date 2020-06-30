@@ -6,7 +6,6 @@ class BlocksList {
   }
 
   addBlock(blockElement) {
-    console.log(blockElement);
     this.container.appendChild(blockElement);
   }
 
