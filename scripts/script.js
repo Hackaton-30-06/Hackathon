@@ -11,14 +11,15 @@ const createBlockItem = (obj) => new Block(obj).create();
 // Рендерим блоки
 const blockItems = [...initialContent.corrections.blocks]
     .map(block => {
-        let blockItem;
+        let blockItem,
+            container = containerTemplate.cloneNode('true');
         switch (block.type) {
             case 'title':
                 blockItem = subtitleTemplate.cloneNode('true');
-                return containerTemplate.innerHTML = createBlockItem({content: block.content, blockItem});
+                return createBlockItem({content: block.content, blockItem, container});
             case 'text':
                 blockItem = paragraphTemplate.cloneNode('true');
-                return containerTemplate.innerHTML = createBlockItem({content: block.content, blockItem});
+                return createBlockItem({content: block.content, blockItem, container});
         }   
     });
 blocksList.render(blockItems);
