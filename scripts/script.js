@@ -35,19 +35,23 @@ const makeBlocksArr = (rerenderFunction) => {
     })
     return BlocksArr;
 }
-
+const setLogo = event => {
+    if(event.target.classList.contains('popup__logo')) {
+        state.updateLogo(event.target.getAttribute('src'))
+        pageLogo.src = state.pullData().logo;
+        popup.close()
+    }
+}
 // Рендерим логотипы в попап
 const logoList = new BlocksList(document.querySelector('.popup__logos'));
 const logossArr = state.pullData().logos
     .map(data => {
         const container = logoContainerTemplate.cloneNode('true');
-        console.log(container);
+        container.addEventListener('click',setLogo)
         const template = logoTemplate.cloneNode(true);
-        const logo =  container.appendChild(new Logo({data, template}).create());
-        console.log(logo);
-        return logo;
+        container.appendChild(new Logo({data, template}).create());
+        return container;
     })
-    console.log(logossArr)
 logoList.render(logossArr);
 
 
