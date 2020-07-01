@@ -48,6 +48,7 @@ class Block {
   moveUnlocker=()=> {
     this.container.setAttribute('draggable',true)
     this.moveButton.addEventListener('mouseleave',this.moveLocker)
+    this.state.setOldId(this.id)
   }
   moveLocker=()=> {
     this.container.removeAttribute('draggable')
@@ -57,6 +58,14 @@ class Block {
   }
   onDragLeave = ()=> {
     this.item.classList.remove('item_on-drop')
+  }
+  onDragOver(evt){
+    evt.preventDefault()
+  }
+  onDrop = () => {
+    console.log(this.id)
+    this.state.replaceBlock(this.id)    
+    this.rerenderFunction()
   }
   addText = () => {
     this.state.addNewBlock(this.id,'text','')
@@ -74,7 +83,9 @@ class Block {
     this.deleteButton.addEventListener('click', this.handlerDelete)
     this.moveButton.addEventListener('mousedown',this.moveUnlocker)
     this.item.addEventListener('dragenter',this.onDragEnter) 
-    this.item.addEventListener('dragleave',this.onDragLeave)       
+    this.item.addEventListener('dragleave',this.onDragLeave)   
+    this.item.addEventListener('dragover',this.onDragOver)       
+    this.item.addEventListener('drop',this.onDrop)        
     this.addTitleButton.addEventListener('click',this.addTitle)
     this.addTextButton.addEventListener('click',this.addText)
   }
