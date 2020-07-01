@@ -19,12 +19,11 @@ class Block {
     this.addTitleButton = this.container.querySelector('.side-menu__button_type_title');
     this.addTextButton = this.container.querySelector('.side-menu__button_type_text');
     this.moveButton = this.container.querySelector('.side-menu__button_type_move');
-    
+
     this.item.textContent = this.content;
     this.item.dataset.id = this.id;
     this.container.appendChild(this.item);
 
-    this.newTitleButton = this.container.querySelector('.side-menu__button_type_title');
     this.setEventListeners();
     return this.container;
   }
@@ -58,12 +57,22 @@ class Block {
   onDragLeave = ()=> {
     this.item.classList.remove('item_on-drop')
   }
+  addText = () => {
+    this.state.addNewBlock(this.id,'text','new text')
+    this.rerenderFunction()
+  }
+  addTitle = () => {   
+    this.state.addNewBlock(this.id,'title','new title')
+    this.rerenderFunction()
+  }
 
   setEventListeners() {
     this.item.addEventListener('blur', this.blurHandler);
     this.deleteButton.addEventListener('click', this.handlerDelete)
     this.moveButton.addEventListener('mousedown',this.moveUnlocker)
-    this.item.addEventListener('dragenter',this.onDragEnter)    
-    this.item.addEventListener('dragleave',this.onDragLeave)
+    this.item.addEventListener('dragenter',this.onDragEnter) 
+    this.item.addEventListener('dragleave',this.onDragLeave)       
+    this.addTitleButton.addEventListener('click',this.addTitle)
+    this.addTextButton.addEventListener('click',this.addText)
   }
 }
