@@ -24,7 +24,7 @@ class State {
     this.store.blocks = blocksArrHasID;
     localStorage.setItem('store',JSON.stringify(this.store))
   }
-  
+
   pullData = () => {    
     return JSON.parse(localStorage.getItem('store'));
   }
@@ -55,7 +55,6 @@ class State {
         }
       })
       this.store.blocks = newBlocksArr;
-      console.log(this.store.blocks);
       this.pushData();
   }
 
@@ -63,5 +62,10 @@ class State {
     return data.blocks.map((item, index) => {
       return {...item, id: index + 1}
     })
-  } 
+  }
+
+  setHeading = (text) => {
+    this.store.heading = text;
+    this.pushData();
+  }
 }
