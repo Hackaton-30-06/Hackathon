@@ -13,6 +13,7 @@ class Manager {
 
   rerenderBlocks = () => {
       this.blocksArr = this.makeBlocksArr(this.rerenderBlocks);
-      this.blocksList.render(blocksArr);
+      this.blocksList.container.innerHTML = '';
+      this.blocksList.render(this.blocksArr);
   }
 }
