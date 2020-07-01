@@ -16,11 +16,11 @@ class Block {
   create() {
     this.item = this.itemTemplate.cloneNode('true');
     this.container = this.containerTemplate.cloneNode('true');
-    this.deleteButton = this.container.querySelector('.side-menu__button_type_delete');
-    this.addTitleButton = this.container.querySelector('.side-menu__button_type_title');
-    this.addTextButton = this.container.querySelector('.side-menu__button_type_text');
-    this.moveButton = this.container.querySelector('.side-menu__button_type_move');
-
+    this.menu = this.container.querySelector('.side-menu');
+    this.deleteButton = this.menu.querySelector('.side-menu__button_type_delete');
+    this.addTitleButton = this.menu.querySelector('.side-menu__button_type_title');
+    this.addTextButton = this.menu.querySelector('.side-menu__button_type_text');
+    this.moveButton = this.menu.querySelector('.side-menu__button_type_move');
     this.item.textContent = this.content;
     this.item.dataset.id = this.id;
     this.container.appendChild(this.item);
