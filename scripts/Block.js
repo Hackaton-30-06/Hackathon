@@ -3,15 +3,20 @@
 class Block {
   
   constructor(obj) {
-    this.blockItem = obj.blockItem;
+    this.itemTemplate = obj.itemTemplate;
     this.content = obj.content;
-    this.container = obj.container;
+    this.containerTemplate = obj.containerTemplate;
   }
 
 
   create() {
-    this.blockItem.textContent = this.content;
-    this.container.appendChild(this.blockItem);
-    return this.container;
+    const item = this.itemTemplate.cloneNode('true');
+    const container = this.containerTemplate.cloneNode('true');
+    item.textContent = this.content;
+    container.appendChild(item);
+
+    this.newTitleButton = container.querySelector('.side-menu__button_type_title');
+    
+    return container;
   }
 }

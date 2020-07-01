@@ -11,17 +11,16 @@ const createBlockItem = (obj) => new Block(obj).create();
 
 
 // Рендерим блоки
-const blockItems = [...initialContent.corrections.blocks]
+const blockItems = initialContent.corrections.blocks
     .map(block => {
-        let blockItem;
-        const container = containerTemplate.cloneNode('true');
+        let itemTemplate;
         switch (block.type) {
             case 'title':
-                blockItem = subtitleTemplate.cloneNode('true');
-                return createBlockItem({content: block.content, blockItem, container});
+                itemTemplate = subtitleTemplate;
+                return createBlockItem({content: block.content, itemTemplate, containerTemplate});
             case 'text':
-                blockItem = paragraphTemplate.cloneNode('true');
-                return createBlockItem({content: block.content, blockItem, container});
+                itemTemplate = paragraphTemplate;
+                return createBlockItem({content: block.content, itemTemplate, containerTemplate});
         }   
     });
 blocksList.render(blockItems);
