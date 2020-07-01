@@ -1,6 +1,7 @@
 'use strict';
 
-const state = new State(initialContent.corrections)
+const state = new State(initialContent.corrections);
+const pageHeader = document.querySelector('title');
 
 const containerTemplate = document.querySelector('#container-template').content.querySelector('.block-container'),
     subtitleTemplate = document.querySelector('#subtitle-template').content.querySelector('.subtitle'),
@@ -11,16 +12,16 @@ const createBlockItem = (obj) => new Block(obj).create();
 
 
 // Рендерим блоки
-const blockItems = initialContent.corrections.blocks
+const blockItems = state.pullData().blocks
     .map(block => {
         let itemTemplate;
         switch (block.type) {
             case 'title':
                 itemTemplate = subtitleTemplate;
-                return createBlockItem({content: block.content, itemTemplate, containerTemplate});
+                return createBlockItem({block, state, itemTemplate, containerTemplate});
             case 'text':
                 itemTemplate = paragraphTemplate;
-                return createBlockItem({content: block.content, itemTemplate, containerTemplate});
+                return createBlockItem({block, state, itemTemplate, containerTemplate});
         }   
     });
 blocksList.render(blockItems);
