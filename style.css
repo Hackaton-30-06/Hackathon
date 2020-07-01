@@ -35,10 +35,27 @@
     line-height: 24px;
     margin-bottom: 24px;        
 }
+
+.item {
+    border-bottom: 5px solid transparent;
+}
+.item_on-drop {
+    box-sizing: border-box;
+    border-bottom: 5px solid red;
+}
+
+
+.block-container {
+    position: relative;
+}
 .side-menu {
     display: flex;
-
+    width: fit-content;
     margin-left: -5px;
+    position: absolute;
+    top: 50%;
+    left: -111px;
+    transform: translate(0, -50%);
 }
 
 .side-menu__button {
@@ -52,6 +69,7 @@
     color: #838383;
     background-position: center center;
     background-repeat: no-repeat;
+    cursor: pointer;
 }
 
 .side-menu__button_type_title {
@@ -66,6 +84,6 @@
     background-image: url(images/icons/delete.svg);
 }
 
-.side-menu__button_type_remove {
+.side-menu__button_type_move {
     background-image: url(images/icons/remove.svg);
 }
