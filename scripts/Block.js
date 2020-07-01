@@ -39,7 +39,8 @@ class Block {
     // this.removeEventListeners();
     const itemID = evt.target.closest('.block-container').querySelector('.item').dataset.id;
     this.state.deleteBlock(itemID);
-    this.container.remove();
+    // this.container.remove();
+    this.rerenderFunction();
   }
 
   setEventListeners() {
