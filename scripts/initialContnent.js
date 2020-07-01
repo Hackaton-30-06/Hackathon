@@ -2,6 +2,7 @@
 
 const initialContent = {
       corrections: {
+        logo: './images/🏀.png',
         heading: 'Правки',
         blocks: [
           {

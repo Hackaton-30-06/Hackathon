@@ -119,7 +119,7 @@
 
   .popup__content {
     width: 45%;
-    height: 45%;
+    min-height: 45%;
     background-color: #fff;
     position: relative;
     box-sizing: border-box;
@@ -141,11 +141,13 @@
     margin-top: 48px;
     color: white;
     font-size: 36px;
+    cursor: pointer;
   }
 
   .popup__button_disabled {
     background-color: white;
     color: rgba(0, 0, 0, 0.2);
+    cursor: default;
 }
 
   .popup__close {
