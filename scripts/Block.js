@@ -39,10 +39,9 @@ class Block {
   }
 
   handlerDelete = (evt) => {
-    // this.removeEventListeners();
+    this.removeEventListeners();
     const itemID = evt.target.closest('.block-container').querySelector('.item').dataset.id;
     this.state.deleteBlock(itemID);
-    // this.container.remove();
     this.rerenderFunction();
   }
   moveUnlocker=()=> {
@@ -63,7 +62,6 @@ class Block {
     evt.preventDefault()
   }
   onDrop = () => {
-    console.log(this.id)
     this.state.replaceBlock(this.id)    
     this.rerenderFunction()
   }
@@ -88,5 +86,17 @@ class Block {
     this.item.addEventListener('drop',this.onDrop)        
     this.addTitleButton.addEventListener('click',this.addTitle)
     this.addTextButton.addEventListener('click',this.addText)
+  }
+  removeEventListeners(){
+    this.item.removeEventListener('blur', this.blurHandler);
+    this.deleteButton.removeEventListener('click', this.handlerDelete)
+    this.moveButton.removeEventListener('mousedown',this.moveUnlocker)
+    this.item.removeEventListener('dragenter',this.onDragEnter) 
+    this.item.removeEventListener('dragleave',this.onDragLeave)   
+    this.item.removeEventListener('dragover',this.onDragOver)       
+    this.item.removeEventListener('drop',this.onDrop)        
+    this.addTitleButton.removeEventListener('click',this.addTitle)
+    this.addTextButton.removeEventListener('click',this.addText)
+    this.moveButton.addEventListener('mouseleave',this.moveLocker)
   }
 }
