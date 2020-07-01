@@ -14,7 +14,7 @@ class State {
     localStorage.setItem('store',JSON.stringify(this.store))
   }
   pullData = () => {    
-    return localStorage.getItem('store')
+    return JSON.parse(localStorage.getItem('store'));
   }
   addBlock(data) {
     if (typeof data === 'object') {
@@ -25,5 +25,13 @@ class State {
   setHeading(data) { 
     this.store.heading = data
     this.pushData()
+  }
+  
+  setBlockContent(id, content) {
+    this.store.blocks
+      .forEach(block => {
+        if (block.id == id) block.content = content;
+      })
+      this.pushData();
   }
 }

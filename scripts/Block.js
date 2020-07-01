@@ -4,19 +4,33 @@ class Block {
   
   constructor(obj) {
     this.itemTemplate = obj.itemTemplate;
-    this.content = obj.content;
+    this.content = obj.block.content;
+    this.id = obj.block.id;
     this.containerTemplate = obj.containerTemplate;
+    this.state = obj.state;
   }
 
 
   create() {
-    const item = this.itemTemplate.cloneNode('true');
-    const container = this.containerTemplate.cloneNode('true');
-    item.textContent = this.content;
-    container.appendChild(item);
+    this.item = this.itemTemplate.cloneNode('true');
+    this.container = this.containerTemplate.cloneNode('true');
+    this.item.textContent = this.content;
+    this.item.dataset.id = this.id;
+    this.container.appendChild(this.item);
 
-    this.newTitleButton = container.querySelector('.side-menu__button_type_title');
-    
-    return container;
+    this.newTitleButton = this.container.querySelector('.side-menu__button_type_title');
+    this.setEventListeners();
+    return this.container;
+  }
+
+  blurHandler = (evt) => {
+    const id = evt.target.dataset.id,
+      content = evt.target.textContent;
+
+    this.state.setBlockContent(id, content);
+  }
+
+  setEventListeners() {
+    this.item.addEventListener('blur', this.blurHandler)
   }
 }
