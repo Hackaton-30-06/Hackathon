@@ -8,6 +8,10 @@ class BlocksList {
   addBlock(blockElement) {
     this.container.appendChild(blockElement);
   }
+  addNewBlock(id,type,content) {
+    this.container.insertBefore({type,content},this.container[id])
+
+  }
 
   render(itemsArray) {
     itemsArray.forEach((item) => {
