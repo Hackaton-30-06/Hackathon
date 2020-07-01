@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Notion 2.0">
+    <meta name="keywords" content="html, css">
+    <meta name="author" content="50 shades of JS">
+    <title>Notion 2.0</title>
+    <link rel="stylesheet" href="./vendor/normalize.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="page">
+    <div class="contant">
+        <img src="" alt="Логотип" class="logo">
+        <h1 class="title" contenteditable="true"></h1>
+        <section class="blocks-container">
+            <template id='container-template' style="display: none;">
+                <div class="block-container">
+                    <div class="side-menu">
+                        <button class="side-menu__button side-menu__button_type_title" aria-label="Добавить новый заголовок"></button>
+                        <button class="side-menu__button side-menu__button_type_text" aria-label="Добавить новый текст"></button>
+                        <button class="side-menu__button side-menu__button_type_delete" aria-label="Удалить текущий элемент"></button>
+                        <button class="side-menu__button side-menu__button_type_move" aria-label="Перенести текущий элемент"></button>
+                    </div>
+                </div>
+            </template>
+            <template id='subtitle-template' style="display: none;">
+                <h2 class="item subtitle" contenteditable="true"></h2>
+            </template>
+            <template id='paragraph-template' style="display: none;">
+                <p class="item paragraph" contenteditable="true"></p>
+            </template>
+        </section>
+
+        <div class="popup" id="popup-edit-icon">
+            <div class="popup__content">
+              <img src="./images/close.svg" alt="" class="popup__close">
+              <div class="popup__logos">
+                <template id='logo-container-template' style="display: none;">
+                    <div class="popup__logo-container"></div>
+                </template>
+                <template id='logo-template' style="display: none;">
+                    <img src="" alt="#" class="popup__logo">
+                </template>
+
+              </div>
+            </div>
+          </div>
+    </div>
+
+    </section>
+    </div>
+    <script src="./scripts/State.js"></script>
+    <script src="./scripts/initialContnent.js"></script>
+    <script src="./scripts/Popup.js"></script>
+    <script src="./scripts/Logo.js"></script>
+    <script src="./scripts/Manager.js"></script>
+    <script src="./scripts/BlocksList.js"></script>
+    <script src="./scripts/Block.js"></script>
+    <script src="./scripts/script.js"></script>
+</body>
+
+</html>
