@@ -1,4 +1,5 @@
 'use strict';
+
 const errorMessages = {
     textErrorLength: 'Должно быть от 2 до 30 символов',
     textErrorEmptyString: 'Это обязательное поле',
@@ -42,13 +43,26 @@ const BlocksArr = manager.getblocksArr();
 state.pushData();
 blocksList.render(BlocksArr);
 
+pageLogo.src = state.pullData().logo
+
 pageLogo.addEventListener('click', (evt) => {
     popup.open();
+    const valid = popupFormValidator.checkFormValidity(popup.form);
+    popupFormValidator.setSubmitButtonState(valid);
 })
 
 pageHeader.addEventListener('blur', (evt) => {
     const text = evt.target.textContent;
     state.setHeading(text);
     evt.target.textContent = state.pullData().heading;
+})
+
+popup.form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const link = evt.currentTarget.elements.link.value
+    state.updateLogo(link);
+    pageLogo.src = state.pullData().logo;
+
+    popup.close();
 })
 

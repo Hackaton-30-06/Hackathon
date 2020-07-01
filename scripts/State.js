@@ -12,13 +12,6 @@ class State {
       data ? this.store = data : this.pushData();
   }
 
-/*   changeID = () => {
-    this.store.blocks
-      .forEach((item, index) => {
-        item.id = index++;
-      })
-  } */
-
   pushData = () => {
     const blocksArrHasID = this.createrID(this.store);
     this.store.blocks = blocksArrHasID;
@@ -72,6 +65,11 @@ class State {
 
   setHeading = (text) => {
     this.store.heading = text;
+    this.pushData();
+  }
+
+  updateLogo(link) {
+    this.store.logo = link;
     this.pushData();
   }
 }
