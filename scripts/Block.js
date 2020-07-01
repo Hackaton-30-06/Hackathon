@@ -14,6 +14,8 @@ class Block {
   create() {
     this.item = this.itemTemplate.cloneNode('true');
     this.container = this.containerTemplate.cloneNode('true');
+    this.deleteButton = this.container.querySelector('.side-menu__button_type_delete');
+
     this.item.textContent = this.content;
     this.item.dataset.id = this.id;
     this.container.appendChild(this.item);
@@ -30,7 +32,15 @@ class Block {
     this.state.setBlockContent(id, content);
   }
 
+  handlerDelete = (evt) => {
+    // this.removeEventListeners();
+    const itemID = evt.target.closest('.block-container').querySelector('.item').dataset.id;
+    this.state.deleteBlock(itemID);
+    this.container.remove();
+  }
+
   setEventListeners() {
-    this.item.addEventListener('blur', this.blurHandler)
+    this.item.addEventListener('blur', this.blurHandler);
+    this.deleteButton.addEventListener('click', this.handlerDelete)
   }
 }
