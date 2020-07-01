@@ -9,7 +9,7 @@
 }
 
 .contant {
-    padding: 15% 100px  0 100px;
+    padding: 15% 120px;
     width: 54%;
     margin: 0 auto;
 }
@@ -17,6 +17,7 @@
 .logo {
   width: 60px;
   height: 60px;
+  object-fit: contain;
 }
 
 .logo:hover {
@@ -32,43 +33,52 @@
 }
 
 .subtitle {
+    margin: 0;
     font-weight: bold;
     font-size: 30px;
     line-height: 36px;
-    margin-bottom: 30px;
-    margin-top: 36px;
+    margin-top: 8px;
+    padding-top: 3px;
+    padding-bottom: 14px;
 }
 
 .paragraph {
+    margin: 0;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
-    line-height: 24px;
-    margin-bottom: 24px;        
+    padding: 10px 0;      
 }
 
 .item {
-    border-bottom: 5px solid transparent;
+    outline: none;
+    width: fit-content;
+    border-bottom: 4px solid transparent;
 }
 .item_on-drop {
     box-sizing: border-box;
-    border-bottom: 5px solid red;
+    border-bottom: 4px solid rgba(45, 170, 219, 0.6);
 }
 
 
 .block-container {
     position: relative;
 }
-.side-menu {
+.side-menu {    
     display: flex;
     width: fit-content;
     margin-left: -5px;
     position: absolute;
-    top: 50%;
-    left: -111px;
-    transform: translate(0, -50%);
+    opacity: 0;
+    top: 10px;
+    right: calc(100% + 16px);
+    transition:  all .1s ease .2s;
 }
 
+.block-container:hover .side-menu {
+    transition-delay: 0;
+    opacity: 1;
+}
 .side-menu__button {
     margin-left: 5px;
     width: 20px;
