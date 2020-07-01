@@ -4,6 +4,30 @@ const initialContent = {
       corrections: {
         logo: './images/🏀.png',
         heading: 'Правки',
+        logos: [{
+          id: 1,
+          link: './images/🏀.png'
+        },
+        {
+          id: 2,
+          link: 'https://im0-tub-ru.yandex.net/i?id=ffb2f1c3abadec7b0a862362168d989c&n=13',
+        },
+        {
+          id: 3,
+          link: 'https://c7.hotpng.com/preview/235/824/869/5bbcfa317777c.jpg'
+        },
+        {
+          id: 4,
+          link: 'https://banner2.cleanpng.com/20180421/hvq/kisspng-physical-literacy-physical-education-school-teache-holistic-healing-5adb22d94313a8.5576782115243107452748.jpg'
+        },
+        {
+          id: 5,
+          link: 'https://pbs.twimg.com/profile_images/1116558797068066818/VXL88UDk.jpg'
+        },
+        {
+          id: 6,
+          link: 'https://avatars.mds.yandex.net/get-pdb/214107/0dfdc706-192d-408a-90cb-3a2803bbde49/s1200?webp=false'
+        }],
         blocks: [
           {
             content: 'Статья 81',

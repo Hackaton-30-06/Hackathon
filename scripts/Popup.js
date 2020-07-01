@@ -1,15 +1,12 @@
 'use strict';
 
 class Popup {
-  constructor(popup, cleanForm) {
+  constructor(popup) {
     this.popup = popup;
-    this.cleanForm = cleanForm;
-    this.form = popup.querySelector('.popup__form');
     this.setEventListenerClose();
   }
 
   open() {
-    this.cleanForm();
     this.popup.classList.add('popup_is-opened');
   }
 
