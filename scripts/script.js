@@ -17,10 +17,10 @@ const makeBlocksArr = (rerenderFunction) => {
         switch (block.type) {
             case 'title':
                 itemTemplate = subtitleTemplate;
-                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction, blocksList});
+                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction});
             case 'text':
                 itemTemplate = paragraphTemplate;
-                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction, blocksList});
+                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction});
         }   
     })
     return BlocksArr;

@@ -60,7 +60,6 @@ class State {
   }
   addNewBlock(id,type,content) {
     this.store.blocks.splice(id,0,{type,content})
-    console.log(this.store.blocks) 
     const blocksArrHasID = this.createrID(this.store);
     this.store.blocks = blocksArrHasID;    
     this.pushData();

@@ -9,8 +9,6 @@ class Block {
     this.containerTemplate = obj.containerTemplate;
     this.state = obj.state;
     this.rerenderFunction = obj.rerenderFunction;
-    this.blocklist = obj.blocksList
-    console.log(obj)
   }
 
 
@@ -61,12 +59,10 @@ class Block {
   addText = () => {
     this.state.addNewBlock(this.id,'text','new text')
     this.rerenderFunction()
-    // this.blocklist.addNewBlock(this.id,'title','new title')
   }
   addTitle = () => {   
     this.state.addNewBlock(this.id,'title','new title')
     this.rerenderFunction()
-    // this.blocklist.addNewBlock(this.id,'title','new title')
   }
 
   setEventListeners() {
