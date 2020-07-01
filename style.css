@@ -36,6 +36,15 @@
     margin-bottom: 24px;        
 }
 
+.item {
+    border-bottom: 5px solid transparent;
+}
+.item_on-drop {
+    box-sizing: border-box;
+    border-bottom: 5px solid red;
+}
+
+
 .block-container {
     position: relative;
 }
@@ -75,6 +84,6 @@
     background-image: url(images/icons/delete.svg);
 }
 
-.side-menu__button_type_remove {
+.side-menu__button_type_move {
     background-image: url(images/icons/remove.svg);
 }
