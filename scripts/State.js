@@ -80,10 +80,9 @@ class State {
   replaceBlock(newId) {
     const newBlock = this.store.blocks[this.oldId-1]
     this.deleteBlock(this.oldId) 
-    if(newId< this.oldId){
+    if(newId < this.oldId){
       this.addNewBlock(newId,newBlock.type,newBlock.content)
     } else {
-      this.deleteBlock(this.oldId) 
       this.addNewBlock(newId-1,newBlock.type,newBlock.content)
     }
     this.pushData()

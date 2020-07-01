@@ -5,7 +5,9 @@ const errorMessages = {
     textErrorEmptyString: 'Это обязательное поле',
     textErrorURL: 'Здесь должна быть ссылка',
   };
-const state = new State(initialContent.corrections);
+
+const pageName = 'corrections'
+const state = new State(initialContent[pageName]);
 const pageHeader = document.querySelector('.title');
 const pageLogo = document.querySelector('.logo');
 
