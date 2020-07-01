@@ -5,7 +5,11 @@ class State {
     this.store = store
     this.init()
   }
-
+  setOldId = (id) =>{
+    
+    console.log(id)
+    this.oldId = id
+  }
   init() {
     const data = this.pullData();
 
@@ -73,5 +77,11 @@ class State {
   setHeading = (text) => {
     this.store.heading = text;
     this.pushData();
+  }
+  replaceBlock(newId) {
+    this.addNewBlock(newId,this.store.blocks[this.oldId-1].type,this.store.blocks[this.oldId-1].content)
+    this.deleteBlock(this.oldId) 
+    this.pushData()
+    console.log(this.pullData())
   }
 }
