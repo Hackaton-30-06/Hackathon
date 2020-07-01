@@ -34,12 +34,26 @@
                 <p class="item paragraph" contenteditable="true"></p>
             </template>
         </section>
+
+        <div class="popup" id="popup-edit-icon">
+            <div class="popup__content">
+              <img src="./images/close.svg" alt="" class="popup__close">
+              <h3 class="popup__title">Обновить логотип</h3>
+              <form id="logo-form" class="popup__form" name="edit" novalidate>
+                <input id = "avatar_url" type="url" name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на аватар" required>
+                <span id = "avatar_url-error" class="error-message"></span>
+                <button type class="button popup__button popup__button_disabled" disabled>Установить</button>
+              </form>
+            </div>
+          </div>
     </div>
 
     </section>
     </div>
     <script src="./scripts/State.js"></script>
     <script src="./scripts/initialContnent.js"></script>
+    <script src="./scripts/Popup.js"></script>
+    <script src="./scripts/FormValidator.js"></script>
     <script src="./scripts/Manager.js"></script>
     <script src="./scripts/BlocksList.js"></script>
     <script src="./scripts/Block.js"></script>
