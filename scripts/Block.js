@@ -5,9 +5,10 @@ class Block {
   constructor(obj) {
     this.itemTemplate = obj.itemTemplate;
     this.content = obj.block.content;
-    this.id = obj.block.id;
+    this.id = obj.index + 1;
     this.containerTemplate = obj.containerTemplate;
     this.state = obj.state;
+    this.rerenderFunction = obj.rerenderFunction;
   }
 
 
@@ -26,8 +27,10 @@ class Block {
   }
 
   blurHandler = (evt) => {
+    
     const id = evt.target.dataset.id,
       content = evt.target.textContent;
+      console.log(id)
 
     this.state.setBlockContent(id, content);
   }

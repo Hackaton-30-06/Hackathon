@@ -14,8 +14,4 @@ class BlocksList {
       this.addBlock(item);
     })
   }
-
-  createItemsArr = (items) => {
-    
-  }
 }

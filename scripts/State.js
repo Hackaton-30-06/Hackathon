@@ -4,15 +4,27 @@ class State {
   constructor(store) {
     this.store = store
     this.init()
-    console.log(this.store);
   }
+
   init() {
     const data = this.pullData();
-      data ? this.store = data : this.pushData()
+
+      data ? this.store = data : this.pushData();
   }
+
+/*   changeID = () => {
+    this.store.blocks
+      .forEach((item, index) => {
+        item.id = index++;
+      })
+  } */
+
   pushData = () => {
+    const blocksArrHasID = this.createrID(this.store);
+    this.store.blocks = blocksArrHasID;
     localStorage.setItem('store',JSON.stringify(this.store))
   }
+  
   pullData = () => {    
     return JSON.parse(localStorage.getItem('store'));
   }
@@ -31,12 +43,14 @@ class State {
       .forEach(block => {
         if (block.id == id) block.content = content;
       })
-      this.pushData();
+    this.pushData();
   }
+
   deleteBlock(id) {
     const newBlocksArr = this.store.blocks
-      .filter(block => {
+      .filter((block, index) => {
         if (block.id != id) {
+          block.id = index++;
           return block;
         }
       })
@@ -44,4 +58,10 @@ class State {
       console.log(this.store.blocks);
       this.pushData();
   }
+
+  createrID = (data) => {
+    return data.blocks.map((item, index) => {
+      return {...item, id: index + 1}
+    })
+  } 
 }

@@ -10,18 +10,26 @@ const containerTemplate = document.querySelector('#container-template').content.
 const blocksList = new BlocksList(document.querySelector('.blocks-container'));
 const createBlockItem = (obj) => new Block(obj).create();
 
-
-// Рендерим блоки
-const blockItems = state.pullData().blocks
-    .map(block => {
+const makeBlocksArr = (rerenderFunction) => {
+    const BlocksArr = state.pullData().blocks
+    .map((block, index) => {
         let itemTemplate;
         switch (block.type) {
             case 'title':
                 itemTemplate = subtitleTemplate;
-                return createBlockItem({block, state, itemTemplate, containerTemplate});
+                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction});
             case 'text':
                 itemTemplate = paragraphTemplate;
-                return createBlockItem({block, state, itemTemplate, containerTemplate});
+                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction});
         }   
-    });
-blocksList.render(blockItems);
+    })
+    return BlocksArr;
+}
+
+const manager = new Manager(makeBlocksArr, blocksList);
+
+
+// Рендерим блоки
+const BlocksArr = manager.getblocksArr();
+state.pushData();
+blocksList.render(BlocksArr);
