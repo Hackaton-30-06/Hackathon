@@ -3,7 +3,7 @@
 const state = new State(initialContent.corrections);
 const pageHeader = document.querySelector('title').focus();
 
-const setCursor = (id) => document.querySelectorAll('.item')[id].focus()
+const setCursor = (id) => document.querySelector(`.item[data-id="${id+1}"]`).focus()
 
 const containerTemplate = document.querySelector('#container-template').content.querySelector('.block-container'),
     subtitleTemplate = document.querySelector('#subtitle-template').content.querySelector('.subtitle'),
