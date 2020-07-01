@@ -57,6 +57,12 @@ class State {
       this.store.blocks = newBlocksArr;
       this.pushData();
   }
+  addNewBlock(id,type,content) {
+    this.store.blocks.splice(id,0,{type,content})
+    const blocksArrHasID = this.createrID(this.store);
+    this.store.blocks = blocksArrHasID;    
+    this.pushData();
+  }
 
   createrID = (data) => {
     return data.blocks.map((item, index) => {
