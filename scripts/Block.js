@@ -9,6 +9,7 @@ class Block {
     this.containerTemplate = obj.containerTemplate;
     this.state = obj.state;
     this.rerenderFunction = obj.rerenderFunction;
+    this.setCursor = obj.setCursor;
   }
 
 
@@ -58,12 +59,14 @@ class Block {
     this.item.classList.remove('item_on-drop')
   }
   addText = () => {
-    this.state.addNewBlock(this.id,'text','new text')
+    this.state.addNewBlock(this.id,'text','')
     this.rerenderFunction()
+    this.setCursor(this.id)
   }
   addTitle = () => {   
-    this.state.addNewBlock(this.id,'title','new title')
+    this.state.addNewBlock(this.id,'title','')
     this.rerenderFunction()
+    this.setCursor(this.id)
   }
 
   setEventListeners() {

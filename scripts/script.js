@@ -1,8 +1,12 @@
 'use strict';
 
 const state = new State(initialContent.corrections);
-const pageHeader = document.querySelector('.title');
+
+const pageHeader = document.querySelector('title');
+
 pageHeader.textContent = state.pullData().heading;
+const setCursor = (id) => document.querySelector(`.item[data-id="${id+1}"]`).focus()
+
 
 const containerTemplate = document.querySelector('#container-template').content.querySelector('.block-container'),
     subtitleTemplate = document.querySelector('#subtitle-template').content.querySelector('.subtitle'),
@@ -17,10 +21,10 @@ const makeBlocksArr = (rerenderFunction) => {
         switch (block.type) {
             case 'title':
                 itemTemplate = subtitleTemplate;
-                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction});
+                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction,setCursor});
             case 'text':
                 itemTemplate = paragraphTemplate;
-                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction});
+                return createBlockItem({block, index, state, itemTemplate, containerTemplate, rerenderFunction,setCursor});
         }   
     })
     return BlocksArr;
