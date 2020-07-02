@@ -41,9 +41,8 @@ const logoList = new BlocksList(document.querySelector('.popup__logos'));
 const logossArr = state.pullData().logos
     .map(data => {
         const container = logoContainerTemplate.cloneNode('true');
-        console.log(container);
         const template = logoTemplate.cloneNode(true);
-        const logo =  container.appendChild(new Logo({data, template}).create());
+        const logo =  container.appendChild(new Logo({data, template, container}).create());
         console.log(logo);
         return logo;
     })
