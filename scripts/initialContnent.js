@@ -14,11 +14,11 @@ const initialContent = {
         },
         {
           id: 3,
-          link: 'https://c7.hotpng.com/preview/235/824/869/5bbcfa317777c.jpg'
+          link: 'https://avatars.mds.yandex.net/get-pdb/1016956/326ef13e-5256-45c5-8f32-151b1b2755c4/s1200?webp=false'
         },
         {
           id: 4,
-          link: 'https://banner2.cleanpng.com/20180421/hvq/kisspng-physical-literacy-physical-education-school-teache-holistic-healing-5adb22d94313a8.5576782115243107452748.jpg'
+          link: 'https://yt3.ggpht.com/a/AATXAJxEbDaOSd6mRrb2wqetLqTETE4DGCMJbff5qA=s900-c-k-c0xffffffff-no-rj-mo'
         },
         {
           id: 5,
@@ -26,7 +26,7 @@ const initialContent = {
         },
         {
           id: 6,
-          link: 'https://avatars.mds.yandex.net/get-pdb/214107/0dfdc706-192d-408a-90cb-3a2803bbde49/s1200?webp=false'
+          link: 'https://avatars.mds.yandex.net/get-pdb/214107/31ad577b-d850-4c01-b5cd-fc85e3701fe1/s1200?webp=false'
         }],
         blocks: [
           {
