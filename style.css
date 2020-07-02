@@ -128,7 +128,7 @@
   }
 
   .popup__content {
-    width: 45%;
+    width: 30%;
     background-color: #fff;
     position: relative;
     box-sizing: border-box;
@@ -198,5 +198,12 @@
   @media screen and (max-width: 540px) {
     .popup__content {
       width: calc(100% - 60px);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .popup__content {
+      width: 45%;
+      background-color: #fff;
     }
   }
