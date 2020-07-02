@@ -12,7 +12,6 @@ class Block {
     this.setCursor = obj.setCursor;
   }
 
-
   create() {
     this.item = this.itemTemplate.cloneNode('true');
     this.container = this.containerTemplate.cloneNode('true');
@@ -30,10 +29,8 @@ class Block {
   }
 
   blurHandler = (evt) => {
-    
     const id = evt.target.dataset.id,
-      content = evt.target.textContent;
-      console.log(id)
+    content = evt.target.textContent;
 
     this.state.setBlockContent(id, content);
   }

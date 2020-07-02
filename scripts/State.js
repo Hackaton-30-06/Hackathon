@@ -12,8 +12,7 @@ class State {
   }
   init() {
     const data = this.pullData();
-
-      data ? this.store = data : this.pushData();
+    data ? this.store = data : this.pushData();
   }
 
   pushData = () => {
@@ -35,6 +34,7 @@ class State {
     this.store.heading = data
     this.pushData()
   };
+
   setBlockContent(id, content) {
     this.store.blocks
       .forEach(block => {
@@ -42,7 +42,6 @@ class State {
       })
     this.pushData();
   }
-
   deleteBlock(id) {
     const newBlocksArr = this.store.blocks
       .filter((block, index) => {
@@ -55,9 +54,7 @@ class State {
       this.pushData();
   }
   addNewBlock(id,type,content) {
-    this.store.blocks.splice(id,0,{type,content})
-    const blocksArrHasID = this.createrID(this.store);
-    this.store.blocks = blocksArrHasID;    
+    this.store.blocks.splice(id,0,{type,content})  
     this.pushData();
   }
 
@@ -86,6 +83,5 @@ class State {
       this.addNewBlock(newId-1,newBlock.type,newBlock.content)
     }
     this.pushData()
-    console.log(this.pullData())
   }
 }
