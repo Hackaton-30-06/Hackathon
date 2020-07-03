@@ -48,7 +48,7 @@ const makeLogosArr = () => {
             container.appendChild(new Logo({data, template}).create());
             return container;
         })
-    return logossArr;
+        return logossArr;
 }
 
 // Устанавливаем логотип
