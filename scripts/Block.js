@@ -31,7 +31,7 @@ class Block {
     const id = evt.target.dataset.id,
     content = evt.target.textContent;
     console.log(content)
-    if (content === '' || ' ') {
+    if (content === '') {
       this.item.textContent = '<Введите текст>'
     }
     this.state.setBlockContent(id, content);
