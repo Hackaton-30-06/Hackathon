@@ -28,12 +28,11 @@ class Block {
     return this.container;
   }
   blurHandler = (evt) => {
-    const id = evt.target.dataset.id,
-    content = evt.target.textContent;
+    const content = evt.target.textContent;
     if (content === '') {
       this.item.textContent = '<Введите текст>'
     }
-    this.state.setBlockContent(id, content);
+    this.state.setBlockContent(this.id, content);
   }
   activeHandler = (evt) => {
     if (evt.target.textContent === '<Введите текст>') {
@@ -42,8 +41,7 @@ class Block {
   }
   handlerDelete = (evt) => {
     this.removeEventListeners();
-    const itemID = evt.target.closest('.block-container').querySelector('.item').dataset.id;
-    this.state.deleteBlock(itemID);
+    this.state.deleteBlock(this.id);
     this.rerenderFunction();
   }
   moveUnlocker=()=> {
