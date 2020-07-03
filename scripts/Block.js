@@ -20,21 +20,27 @@ class Block {
     this.addTitleButton = this.menu.querySelector('.side-menu__button_type_title');
     this.addTextButton = this.menu.querySelector('.side-menu__button_type_text');
     this.moveButton = this.menu.querySelector('.side-menu__button_type_move');
-    this.item.textContent = this.content;
+    this.item.textContent = this.content === '' ? '<Введите текст>' : this.content;
     this.item.dataset.id = this.id;
     this.container.appendChild(this.item);
 
     this.setEventListeners();
     return this.container;
   }
-
   blurHandler = (evt) => {
     const id = evt.target.dataset.id,
     content = evt.target.textContent;
-
+    console.log(content)
+    if (content === '' || ' ') {
+      this.item.textContent = '<Введите текст>'
+    }
     this.state.setBlockContent(id, content);
   }
-
+  activeHandler = (evt) => {
+    if (evt.target.textContent === '<Введите текст>') {
+      evt.target.textContent = '';
+    }
+  }
   handlerDelete = (evt) => {
     this.removeEventListeners();
     const itemID = evt.target.closest('.block-container').querySelector('.item').dataset.id;
@@ -72,9 +78,9 @@ class Block {
     this.rerenderFunction()
     this.setCursor(this.id)
   }
-
   setEventListeners() {
-    this.item.addEventListener('blur', this.blurHandler);
+    this.item.addEventListener('blur', this.blurHandler)
+    this.item.addEventListener('focus', this.activeHandler)
     this.deleteButton.addEventListener('click', this.handlerDelete)
     this.moveButton.addEventListener('mousedown',this.moveUnlocker)
     this.item.addEventListener('dragenter',this.onDragEnter) 
@@ -85,7 +91,8 @@ class Block {
     this.addTextButton.addEventListener('click',this.addText)
   }
   removeEventListeners(){
-    this.item.removeEventListener('blur', this.blurHandler);
+    this.item.removeEventListener('blur', this.blurHandler)
+    this.item.removeEventListener('focus', this.activeHandler)
     this.deleteButton.removeEventListener('click', this.handlerDelete)
     this.moveButton.removeEventListener('mousedown',this.moveUnlocker)
     this.item.removeEventListener('dragenter',this.onDragEnter) 

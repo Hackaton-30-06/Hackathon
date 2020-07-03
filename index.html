@@ -45,8 +45,12 @@
                 <template id='logo-template' style="display: none;">
                     <img src="" alt="#" class="popup__logo">
                 </template>
-
               </div>
+              <form id="logo-form" class="popup__form" name="edit" novalidate>
+                <input id = "logo_url" type="url" name="link" class="popup__input popup__input_type_link-url" placeholder="Ссылка на логотип" required>
+                <span id = "logo_url-error" class="error-message"></span>
+                <button type class="button popup__button popup__button_disabled" disabled>Установить</button>
+              </form>
             </div>
           </div>
     </div>
@@ -56,8 +60,8 @@
     <script src="./scripts/State.js"></script>
     <script src="./scripts/initialContnent.js"></script>
     <script src="./scripts/Popup.js"></script>
+    <script src="./scripts/FormValidator.js"></script>
     <script src="./scripts/Logo.js"></script>
-    <script src="./scripts/Manager.js"></script>
     <script src="./scripts/BlocksList.js"></script>
     <script src="./scripts/Block.js"></script>
     <script src="./scripts/script.js"></script>

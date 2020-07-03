@@ -1,5 +1,9 @@
 'use strict';
 
+const errorMessages = {
+    textErrorEmptyString: ' ',
+    textErrorURL: 'Здесь должна быть ссылка',
+  };
 const containerTemplate = document.querySelector('#container-template').content.querySelector('.block-container'),
     subtitleTemplate = document.querySelector('#subtitle-template').content.querySelector('.subtitle'),
     paragraphTemplate = document.querySelector('#paragraph-template').content.querySelector('.paragraph'),
@@ -10,14 +14,16 @@ const containerTemplate = document.querySelector('#container-template').content.
     pageLogo = document.querySelector('.logo');
 
 const state = new State(initialContent[pageName]);
-const popup = new Popup(document.querySelector('.popup'));
-const blocksList = new BlocksList(document.querySelector('.blocks-container'));
-const createBlockItem = (obj) => new Block(obj).create();
-const logoList = new BlocksList(document.querySelector('.popup__logos'));
 
-pageHeader.textContent = state.pullData().heading;
 const setCursor = (id) => document.querySelector(`.item[data-id="${id+1}"]`).focus()
-
+const setLogo = event => {
+    if(event.target.classList.contains('popup__logo')) {
+        state.updateLogo(event.target.getAttribute('src'))
+        pageLogo.src = state.pullData().logo;
+        popup.close()
+    }
+}
+const createBlockItem = (obj) => new Block(obj).create();
 const makeBlocksArr = (rerenderFunction) => {
     const BlocksArr = state.pullData().blocks
         .map((block, index) => {
@@ -33,40 +39,60 @@ const makeBlocksArr = (rerenderFunction) => {
         })
     return BlocksArr;
 }
-const setLogo = event => {
-    if(event.target.classList.contains('popup__logo')) {
-        state.updateLogo(event.target.getAttribute('src'))
-        pageLogo.src = state.pullData().logo;
-        popup.close()
-    }
+const makeLogosArr = () => {
+    const logossArr = state.pullData().logos
+        .map(data => {
+            const container = logoContainerTemplate.cloneNode('true');
+            container.addEventListener('click',setLogo)
+            const template = logoTemplate.cloneNode(true);
+            container.appendChild(new Logo({data, template}).create());
+            return container;
+        })
+    return logossArr;
 }
-// Рендерим логотипы в попап
-const logossArr = state.pullData().logos
-    .map(data => {
-        const container = logoContainerTemplate.cloneNode('true');
-        container.addEventListener('click',setLogo)
-        const template = logoTemplate.cloneNode(true);
-        container.appendChild(new Logo({data, template}).create());
-        return container;
-    })
-logoList.render(logossArr);
 
-const manager = new Manager(makeBlocksArr, blocksList);
+// Устанавливаем валидацию и обработку события сабмит формы попапа
+const popupFormValidator = new FormValidator(document.querySelector('.popup__form'), errorMessages);
+const cleanForm = popupFormValidator.setEventListeners();
+const popup = new Popup(document.querySelector('.popup'), cleanForm);
+popup.form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const link = evt.currentTarget.elements.link.value
+    state.updateLogo(link);
+    pageLogo.src = state.pullData().logo;
 
-// Рендерим блоки
-const BlocksArr = manager.getblocksArr();
-// state.pushData();
-blocksList.render(BlocksArr);
+    popup.close();
+})
 
+// Устанавливаем логотип
 pageLogo.src = state.pullData().logo;
 pageLogo.addEventListener('click', (evt) => {
     popup.open();
+    const valid = popupFormValidator.checkFormValidity(popup.form);
+    popupFormValidator.setSubmitButtonState(valid);
 })
 
+// Устанавливаем заголовок
+pageHeader.textContent = state.pullData().heading;
 pageHeader.addEventListener('blur', (evt) => {
     const text = evt.target.textContent;
     state.setHeading(text);
     evt.target.textContent = state.pullData().heading;
 })
+
+// Рендерим блоки
+const blocksList = new BlocksList(document.querySelector('.blocks-container'), makeBlocksArr);
+blocksList.render(blocksList.getblocksArr())
+
+// Рендерим логотипы в попап
+const logoList = new BlocksList(document.querySelector('.popup__logos'), makeLogosArr);
+logoList.render(logoList.getblocksArr())
+
+
+
+
+
+
+
 
 
