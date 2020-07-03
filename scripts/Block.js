@@ -30,7 +30,6 @@ class Block {
   blurHandler = (evt) => {
     const id = evt.target.dataset.id,
     content = evt.target.textContent;
-    console.log(content)
     if (content === '') {
       this.item.textContent = '<Введите текст>'
     }

@@ -51,19 +51,6 @@ const makeLogosArr = () => {
     return logossArr;
 }
 
-// Устанавливаем валидацию и обработку события сабмит формы попапа
-const popupFormValidator = new FormValidator(document.querySelector('.popup__form'), errorMessages);
-const cleanForm = popupFormValidator.setEventListeners();
-const popup = new Popup(document.querySelector('.popup'), cleanForm);
-popup.form.addEventListener('submit', (evt) => {
-    evt.preventDefault();
-    const link = evt.currentTarget.elements.link.value
-    state.updateLogo(link);
-    pageLogo.src = state.pullData().logo;
-
-    popup.close();
-})
-
 // Устанавливаем логотип
 pageLogo.src = state.pullData().logo;
 pageLogo.addEventListener('click', (evt) => {
@@ -87,6 +74,21 @@ blocksList.render(blocksList.getblocksArr())
 // Рендерим логотипы в попап
 const logoList = new BlocksList(document.querySelector('.popup__logos'), makeLogosArr);
 logoList.render(logoList.getblocksArr())
+
+// Устанавливаем валидацию и обработку события сабмит формы попапа
+const popupFormValidator = new FormValidator(document.querySelector('.popup__form'), errorMessages);
+const cleanForm = popupFormValidator.setEventListeners();
+const popup = new Popup(document.querySelector('.popup'), cleanForm);
+popup.form.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    const link = evt.currentTarget.elements.link.value
+    state.updateLogo(link);
+    state.updateLogosArr(link);
+    logoList.rerenderBlocks();
+    pageLogo.src = state.pullData().logo;
+
+    popup.close();
+})
 
 
 

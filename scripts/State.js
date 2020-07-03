@@ -14,9 +14,8 @@ class State {
     const data = this.pullData();
     data ? this.store = data : this.pushData();
   }
-
   pushData = () => {
-    const blocksArrHasID = this.createrID(this.store);
+    const blocksArrHasID = this.createrID(this.store.blocks);
     this.store.blocks = blocksArrHasID;
     localStorage.setItem('store',JSON.stringify(this.store))
   }
@@ -34,7 +33,6 @@ class State {
     this.store.heading = data
     this.pushData()
   };
-
   setBlockContent(id, content) {
     this.store.blocks
       .forEach(block => {
@@ -57,23 +55,19 @@ class State {
     this.store.blocks.splice(id,0,{type,content})  
     this.pushData();
   }
-
-  createrID = (data) => {
-    return data.blocks.map((item, index) => {
+  createrID = (arr) => {
+    return arr.map((item, index) => {
       return {...item, id: index + 1}
     })
   }
-
   setHeading = (text) => {
     this.store.heading = text;
     this.pushData();
   }
-
   updateLogo(link) {
     this.store.logo = link;
     this.pushData();
   }
-  
   replaceBlock(newId) {
     const newBlock = this.store.blocks[this.oldId-1]
     this.deleteBlock(this.oldId) 
@@ -83,5 +77,9 @@ class State {
       this.addNewBlock(newId-1,newBlock.type,newBlock.content)
     }
     this.pushData()
+  }
+  updateLogosArr = (link) => {
+    this.store.logos = [...this.store.logos.splice(1), {id: '6', link}];
+    this.pushData();
   }
 }
