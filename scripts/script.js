@@ -25,7 +25,7 @@ popup.form.addEventListener('submit', (evt) => {
     const link = evt.currentTarget.elements.link.value
     state.updateLogo(link);
     state.updateLogosArr(link);
-    logoList.rerenderBlocks();
+    logoList.rerender();
     pageLogo.src = state.pullData().logo;
 
     popup.close();
