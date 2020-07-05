@@ -1,10 +1,10 @@
 "use strict";
 
 class BlocksList {
-  constructor(container, makeBlocksArr) {
+  constructor(container, makeItemsArr) {
     this.container = container;
-    this.makeBlocksArr = makeBlocksArr;
-    this.blocksArr = this.makeBlocksArr(this.rerenderBlocks);
+    this.makeItemsArr = makeItemsArr;
+    this.blocksArr = this.makeItemsArr(this.rerender);
   }
 
   addBlock(blockElement) {
@@ -25,8 +25,8 @@ class BlocksList {
     return this.blocksArr;
   };
 
-  rerenderBlocks = () => {
-    this.blocksArr = this.makeBlocksArr(this.rerenderBlocks);
+  rerender = () => {
+    this.blocksArr = this.makeItemsArr(this.rerender);
     this.container.innerHTML = "";
     this.render(this.blocksArr);
   };

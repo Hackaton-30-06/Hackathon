@@ -73,6 +73,9 @@ class State {
     this.pushData()
   }
   updateLogosArr = (link) => {
+    const isAlreadyHasLink = this.store.logos
+      .some(item => item.link === link)
+    if (isAlreadyHasLink) return;
     this.store.logos = [...this.store.logos.splice(1), {id: '6', link}];
     this.pushData();
   }
