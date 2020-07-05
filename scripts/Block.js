@@ -21,7 +21,6 @@ class Block {
     this.addTextButton = this.menu.querySelector('.side-menu__button_type_text');
     this.moveButton = this.menu.querySelector('.side-menu__button_type_move');
     this.item.textContent = this.content === '' ? '<Введите текст>' : this.content;
-    this.item.dataset.id = this.id;
     this.container.appendChild(this.item);
 
     this.setEventListeners();
@@ -62,7 +61,7 @@ class Block {
     evt.preventDefault()
   }
   onDrop = () => {
-    this.state.replaceBlock(this.id)    
+    this.state.replaceBlock(this.id)
     this.rerenderFunction()
   }
   addText = () => {

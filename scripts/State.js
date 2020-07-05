@@ -3,29 +3,26 @@
 class State {
   constructor(store) {
     this.store = store
+    this.createrID()
     this.init()
-  }
-  setOldId = (id) =>{
-    
-    console.log(id)
-    this.oldId = id
   }
   init() {
     const data = this.pullData();
     data ? this.store = data : this.pushData();
   }
+  setOldId = (id) =>{
+    this.oldId = id
+  }
   pushData = () => {
-    const blocksArrHasID = this.createrID(this.store.blocks);
-    this.store.blocks = blocksArrHasID;
     localStorage.setItem('store',JSON.stringify(this.store))
   }
-
   pullData = () => {    
     return JSON.parse(localStorage.getItem('store'));
   }
   addBlock(data) {
     if (typeof data === 'object') {
-      this.store.blocks.push(data)   
+      this.store.blocks.push(data)
+      this.createrID()
       this.pushData()
     } 
   }
@@ -41,22 +38,18 @@ class State {
     this.pushData();
   }
   deleteBlock(id) {
-    const newBlocksArr = this.store.blocks
-      .filter((block, index) => {
-        if (block.id != id) {
-          block.id = index++;
-          return block;
-        }
-      })
-      this.store.blocks = newBlocksArr;
-      this.pushData();
+    this.store.blocks = this.store.blocks
+      .filter(block => {if (block.id != id) return block})
+    this.createrID()
+    this.pushData()
   }
   addNewBlock(id,type,content) {
-    this.store.blocks.splice(id,0,{type,content})  
+    this.store.blocks.splice(id,0,{type,content})
+    this.createrID()
     this.pushData();
   }
-  createrID = (arr) => {
-    return arr.map((item, index) => {
+  createrID = () => {
+    this.store.blocks = this.store.blocks.map((item, index) => {
       return {...item, id: index + 1}
     })
   }
@@ -76,6 +69,7 @@ class State {
     } else {
       this.addNewBlock(newId-1,newBlock.type,newBlock.content)
     }
+    this.createrID()
     this.pushData()
   }
   updateLogosArr = (link) => {
