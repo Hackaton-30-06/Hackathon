@@ -22,6 +22,7 @@ class Block {
     this.moveButton = this.menu.querySelector('.side-menu__button_type_move');
     this.item.textContent = this.content === '' ? '<Введите текст>' : this.content;
     this.container.appendChild(this.item);
+    this.item.dataset.id = this.id;
 
     this.setEventListeners();
     return this.container;
@@ -79,9 +80,9 @@ class Block {
     this.item.addEventListener('focus', this.activeHandler)
     this.deleteButton.addEventListener('click', this.handlerDelete)
     this.moveButton.addEventListener('mousedown',this.moveUnlocker)
-    this.item.addEventListener('dragenter',this.onDragEnter) 
-    this.item.addEventListener('dragleave',this.onDragLeave)   
-    this.item.addEventListener('dragover',this.onDragOver)       
+    this.item.addEventListener('dragenter',this.onDragEnter)
+    this.item.addEventListener('dragleave',this.onDragLeave)
+    this.item.addEventListener('dragover',this.onDragOver)
     this.item.addEventListener('drop',this.onDrop)        
     this.addTitleButton.addEventListener('click',this.addTitle)
     this.addTextButton.addEventListener('click',this.addText)
