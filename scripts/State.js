@@ -46,7 +46,7 @@ class State {
   addNewBlock(id,type,content) {
     this.store.blocks.splice(id,0,{type,content})
     this.createrID()
-    this.pushData();
+    this.pushData()
   }
   createrID = () => {
     this.store.blocks = this.store.blocks.map((item, index) => {

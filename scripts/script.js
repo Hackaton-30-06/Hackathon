@@ -14,7 +14,8 @@ const containerTemplate = document.querySelector('#container-template').content.
     pageLogo = document.querySelector('.logo');
 
 const state = new State(initialContent[pageName]);
-const setCursor = (id) => document.querySelector(`.item[data-id="${id+1}"]`).focus()
+const setCursor = (id) => {
+    document.querySelector(`.item[data-id="${id+1}"]`).focus()}
 
 // Устанавливаем валидацию и обработку события сабмит формы попапа смены логотипа
 const popupFormValidator = new FormValidator(document.querySelector('.popup__form'), errorMessages);
