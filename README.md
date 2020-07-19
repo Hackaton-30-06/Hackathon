@@ -1,6 +1,6 @@
 <h1> Проектная работа командны "50 shades of JS" в рамках хакатона</h1>
 
-#[Notion 2.0](https://hackaton-30-06.github.io/Hackathon/)
+[Notion 2.0](https://hackaton-30-06.github.io/Hackathon/)
 
 За 24 часа был реализован следующий функционал:
 <ol>
